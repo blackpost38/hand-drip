@@ -4,127 +4,43 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Try Hand Drip</title>
   </head>
   <body>
-    <div class="mdl-grid">
-      <div class="card mdl-card mdl-shadow--2dp">
-        <div class="mdl-card__title mdl-card--expand">
-          <h2 class="mdl-card__title-text">Are you ready?</h2>
+    <header class="header">
+      <div class="row">
+        <h1 class="header-title">Try Hand Drip</h1>
+      </div>
+    </header>
+    <main class="main">
+      <div class="row">
+        <div class="col-9">
+          <!-- TODO: make this into Tab component -->
+          <div class="main-tab">
+            <nav>
+              <ol>
+                <li class="active">
+                  <a href="#" class="active"></a>
+                </li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+              </ol>
+            </nav>
+            <section>
+              <h2>2. Functions</h2>
+              <p>Great job, test! In JavaScript, when we surround a word with quotes it's called a string, and when we're done with a line of code we finish it with a semicolon.</p>
+              <p>JavaScript also has built-in features, called functions. In order to call a function, we simply write its name (this time without quotes) and end it with a set of parentheses. Try calling the alert function as you see below.</p>
+              <p>Don't be afraid when a box pops up — that's your code working, test!</p>
+            </section>
+          </div>
         </div>
-        <div class="mdl-card__supporting-text">
-          Begin learning here by clicking a below button.
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            I'm ready!
-          </a>
+        <div class="col-3">
+          <img src="images/coffee.png" alt="coffee picture">
         </div>
       </div>
-    </div>
-    <audio src="tyarari.mp3" preload="auto" id="audio"></audio>
-    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-    <script>
-      var ZERO_STEP = 30;
-      var FIRST_STEP = 45;
-      var SECOND_STEP = 45;
-      var THIRD_STEP = 45;
-
-      var audio = document.querySelector('#audio');
-      var button = document.querySelector('.mdl-button');
-      button.addEventListener('click', startHandDrip, false);
-
-      var interval;
-      function startHandDrip () {
-        console.log('start hand drip');
-
-        var title = document.querySelector('.mdl-card__title-text');
-        updateText(title, 'Bloom');
-
-        var supporting = document.querySelector('.mdl-card__supporting-text');
-        updateText(supporting, ZERO_STEP);
-
-        toggleButton(button, false);
-
-        interval = setInterval(
-          countDown.bind(
-            this,
-            updateTextAndCountDown.bind(
-              this,
-              {
-                title: 'Pour & Brew First',
-                supporting: FIRST_STEP
-              },
-              updateTextAndCountDown.bind(
-                this,
-                {
-                  title: 'Pour & Brew Second',
-                  supporting: SECOND_STEP
-                },
-                updateTextAndCountDown.bind(
-                  this,
-                  {
-                    title: 'Pour & Brew Last',
-                    supporting: THIRD_STEP
-                  },
-                  finishHandDrip
-                )
-              )
-            )
-          ),
-          1000
-        );
-      }
-
-      function countDown (next) {
-        var supporting = document.querySelector('.mdl-card__supporting-text');
-        var restTime = +supporting.textContent - 1;
-        if (restTime < 0) {
-          clearInterval(interval);
-          audio.play();
-          if (next) {
-            next();
-          }
-        } else {
-          updateText(
-            supporting,
-            restTime
-          );
-        }
-      }
-      
-      function updateTextAndCountDown (text, next) {
-        var title = document.querySelector('.mdl-card__title-text');
-        updateText(title, text.title);
-
-        var supporting = document.querySelector('.mdl-card__supporting-text');
-        updateText(supporting, text.supporting);
-
-        interval = setInterval(countDown.bind(this, next), 1000);
-      }
-
-      function finishHandDrip () {
-        console.log('finish hand drip');
-
-        var title = document.querySelector('.mdl-card__title-text');
-        updateText(title, 'Try it');
-
-        var supporting = document.querySelector('.mdl-card__supporting-text');
-        updateText(supporting, 'It\'s done, just enjoy your hand drip!');
-
-        toggleButton(button, true);
-        updateText(button, 'I\'ll retry!');
-      }
-      
-      function updateText (element, text) {
-        element.textContent = text;
-      }
-
-      function toggleButton (element, isShow) {
-        var parentEl = element.parentElement;
-        return isShow ? parentEl.classList.remove('hidden') : parentEl.classList.add('hidden')
-      }
-    </script>
+    </main>
   </body>
 </html>

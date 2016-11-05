@@ -1,0 +1,102 @@
+/* global */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font: 400 16px /1.2 Roboto;
+  color: #424242;
+}
+
+
+.row {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+
+/* header */
+.header {
+  height: 94px;
+  width: 100%;
+  background: #e5bb31;
+  padding: 0 20px;
+}
+
+.header-title {
+  color: #fff;
+  margin: 20px 0;
+  font: 600 2em sans-serif;
+}
+
+
+/* main */
+.main {
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.main-tab {
+  width: 100%;
+}
+
+.main-tab > nav > ol {
+  list-style: none;
+  padding: 0 0 0 11px;
+  margin: 0;
+}
+
+.main-tab > nav > ol > li {
+  display: inline-block;
+  width: 44px;
+  height: 0;
+  border: 2px solid #efefef;
+  position: relative;
+}
+
+.main-tab > nav > ol > li:last-child {
+  width: 0;
+}
+
+.main-tab > nav > ol > li > a {
+  width: 22px;
+  height: 22px;
+  border: 4px solid #efefef;
+  border-radius: 50%;
+  background-color: #fff;
+
+  position: absolute;
+  top: -11px;
+  left: -11px;
+}
+
+.main-tab > nav > ol > .active,
+.main-tab > nav > ol > li > .active {
+  border-color: #e5bb31;
+}
+
+.main-tab > section > h2 {
+  font: 600 1.5em sans-serif;
+}
