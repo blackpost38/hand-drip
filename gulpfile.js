@@ -1,12 +1,21 @@
-var gulp        = require('gulp');
-var browserSync = require('browser-sync').create();
+var gulp = require('gulp');
+var browserify = require('browserify');
+var stringify = require('stringify');
+var babelify = require('babelify');
+var source = require('vinyl-source-stream');
 
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        }
-    });
+
+gulp.task("transform", function () {
+	var b = browserify('./js/main.js')
+		.transform(babelify, {presets: ['es2015']})
+		.transform(stringify, {
+			appliesTo: { includeExtensions: ['.html'] },
+			minify: true
+    })
+
+  return b.bundle()
+		.pipe(source('main.js'))
+    .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('default', ['browser-sync']);
+gulp.task('default', ['transform']);
