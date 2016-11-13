@@ -31,7 +31,7 @@ gulp.task('browser-sync', function () {
 
 gulp.task('source-watch', function () {
 	gulp.watch(['js/*.js', 'js/**/*.js'], ['js-watch']);
-	gulp.watch('*.html').on('change', browserSync.reload);
+	gulp.watch(['*.html', '**/*.html']).on('change', browserSync.reload);
 })
 
 gulp.task('default', ['browser-sync', 'source-watch']);
