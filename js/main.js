@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import Timer from './components/timer';
 import Tab from './components/tab';
 

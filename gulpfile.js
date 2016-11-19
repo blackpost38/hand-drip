@@ -6,8 +6,9 @@ var source = require('vinyl-source-stream');
 var browserSync = require('browser-sync').create();
 
 gulp.task('transform-js', function () {
+	console.log('transform-js');
 	var b = browserify('./js/main.js')
-		.transform(babelify, {presets: ['es2015']})
+		.transform(babelify, { presets: ['es2015'] })
 		.transform(stringify, {
 			appliesTo: { includeExtensions: ['.html'] },
 			minify: true

@@ -34,17 +34,17 @@ export default class Tab {
 
   detachAllEl (template) {
     const sectionsEl = template.querySelectorAll('section');
-    sectionsEl.forEach((sectionEl) => {
+    for (let sectionEl of sectionsEl) {
       sectionEl.parentElement.removeChild(sectionEl);
-    });
+    }
     return [...sectionsEl];
   }
 
   detachListsEl (el) {
     const lisEl = el.querySelectorAll('li');
-    lisEl.forEach((liEl) => {
+    for (let liEl of lisEl) {
       liEl.parentElement.removeChild(liEl);
-    });
+    }
     return [...lisEl];
   }
 
