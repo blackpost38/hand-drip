@@ -91,6 +91,7 @@ body {
   top: -11px;
   right: -11px;
   z-index: 1;
+  cursor: pointer;
 }
 
 .main-tab > nav > ol > .active,
@@ -103,7 +104,8 @@ body {
 }
 
 .next-btn,
-.prev-btn {
+.prev-btn,
+.retry-btn {
   background: none;
   border: 1px solid #e5bb31;
   border-radius: 4px;
@@ -112,7 +114,35 @@ body {
 }
 
 .next-btn:hover,
-.prev-btn:hover {
+.prev-btn:hover,
+.retry-btn:hover {
   background-color: #e5bb31;
   color: #fff;
+}
+
+.next-btn:active,
+.prev-btn:hover,
+.retry-btn:hover {
+  background-color: #e5bb31;
+  color: #fff;
+}
+
+.main-timer {
+  width: 100%;
+}
+
+.main-timer > .contents {
+  position: relative;
+  max-width: 100%;
+  height: 230px;
+  background: no-repeat center/100% url("../images/coffee.png");
+  text-align: center;
+  padding: 40% 0;
+}
+
+.main-timer > .contents > .count {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1.7;
+  color: white;
 }

@@ -1,4 +1,10 @@
+import Timer from './components/timer';
 import Tab from './components/tab';
+
+var timer = new Timer({
+  el: '.main-timer'
+});
+timer.render();
 
 var tab = new Tab({
   el: '.main-tab',
@@ -16,6 +22,19 @@ var tab = new Tab({
           const nextIndex = tabIndex + 1;
           this.state.activeTabId = `tab-${nextIndex}`;
         }
+
+        if (this.state.activeTabId === 'tab-5') {
+          timer.setTimer(30).count();
+        } else if (this.state.activeTabId === 'tab-6') {
+          timer.setTimer(50).count();
+        } else if (this.state.activeTabId === 'tab-7') {
+          timer.setTimer(50).count();
+        } else if (this.state.activeTabId === 'tab-8') {
+          timer.setTimer(50).count();
+        } else {
+          timer.render();
+        }
+
         this.render();
       }
     },
@@ -28,6 +47,19 @@ var tab = new Tab({
         if (tabIndex > 1) {
           this.state.activeTabId = `tab-${tabIndex -1}`;
         }
+
+        if (this.state.activeTabId === 'tab-5') {
+          timer.setTimer(30).count();
+        } else if (this.state.activeTabId === 'tab-6') {
+          timer.setTimer(50).count();
+        } else if (this.state.activeTabId === 'tab-7') {
+          timer.setTimer(50).count();
+        } else if (this.state.activeTabId === 'tab-8') {
+          timer.setTimer(50).count();
+        } else {
+          timer.render();
+        }
+
         this.render();
       }
     },
@@ -42,6 +74,26 @@ var tab = new Tab({
           this.state.activeTabId = `tab-${index + 1}`;
         }
 
+        if (this.state.activeTabId === 'tab-5') {
+          timer.setTimer(30).count();
+        } else if (this.state.activeTabId === 'tab-6') {
+          timer.setTimer(50).count();
+        } else if (this.state.activeTabId === 'tab-7') {
+          timer.setTimer(50).count();
+        } else if (this.state.activeTabId === 'tab-8') {
+          timer.setTimer(50).count();
+        } else {
+          timer.render();
+        }
+
+        this.render();
+      }
+    },
+    {
+      eventType: 'click',
+      selector: '.retry-btn',
+      callback (event) {
+        this.state.activeTabId = 'tab-1';
         this.render();
       }
     },
