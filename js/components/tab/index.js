@@ -3,9 +3,7 @@ import template from './template.html';
 export default class Tab {
   constructor (config) {
     // Set component state
-    this.state = config.state && typeof config.state === 'object'
-                  ? config.state
-                  : {};
+    this.state = config.state && typeof config.state === 'object' ? config.state : {};
 
     // Set root element and html
     this.el = document.querySelector(config.el);
@@ -34,31 +32,6 @@ export default class Tab {
     }, false);
   }
 
-  applyStateToTemplate (template, state) {
-    const { activeTabId } = state;
-    const clonedTemplate = template.cloneNode(true);
-    const olEl = clonedTemplate.querySelector('ol');
-
-    const lisEl = [];
-    while (olEl.firstChild) {
-      lisEl.push(olEl.firstChild);
-      olEl.removeChild(olEl.firstChild);
-    }
-
-    const modifiedLisEl = lisEl.map((liEl, index) => {
-      index + 1 === +activeTabId.split('-')[1]
-        ? liEl.classList.add('active')
-        : liEl.classList.remove('active');
-      return liEl;
-    });
-
-    modifiedLisEl.forEach(liEl => {
-      olEl.appendChild(liEl);
-    });
-
-    return clonedTemplate;
-  }
-
   detachAllEl (template) {
     const sectionsEl = template.querySelectorAll('section');
     sectionsEl.forEach((sectionEl) => {
@@ -73,24 +46,6 @@ export default class Tab {
       liEl.parentElement.removeChild(liEl);
     });
     return [...lisEl];
-  }
-
-  getNavTemplate (template) {
-    const div = document.createElement("div");
-    div.innerHTML = template;
-    const navEl = div.querySelector('.nav');
-
-    return navEl;
-  }
-
-  getContentsTemplate (template) {
-    const div = document.createElement("div");
-    div.innerHTML = template;
-
-    const contentsEl = div.querySelector('.contents');
-    contentsEl.innerHTML = '';
-
-    return contentsEl;
   }
 
   render () {
